@@ -45,6 +45,18 @@ namespace Med {
 				_colliders.emplace(tile, pol);
 			}
 		}
+		if(fight && !atoi(&d)) {
+			sf::ConvexShape pol(4);
+			pol.setPosition(spr.getPosition());
+			pol.setPoint(0, sf::Vector2f(tileSize * scale / 2, 0));
+			pol.setPoint(1, sf::Vector2f(0, tileSize * scale / 4));
+			pol.setPoint(2, sf::Vector2f(tileSize * scale / 2, tileSize * scale / 2));
+			pol.setPoint(3, sf::Vector2f(tileSize * scale, tileSize * scale / 4));
+			pol.setFillColor(sf::Color::Transparent);
+			pol.setOutlineColor(sf::Color::White);
+			pol.setOutlineThickness(1);
+			_zones.emplace(tile, pol);
+		}
 	}
 		
 	void Map::draw(sf::RenderWindow& window) {
@@ -52,11 +64,13 @@ namespace Med {
 		for (auto kv : _tiles) {
 			window.draw(kv.second);
 		}
-		//check position for collision
+
 		if (fight) {
 			for (auto kv : _colliders) {
 				window.draw(kv.second);
-				std::cout << "*" << std::endl;
+			}
+			for (auto kv : _zones) {
+				window.draw(kv.second);
 			}
 		}
 	}
@@ -69,9 +83,7 @@ namespace Med {
 
 		int tilex, tiley;
 		int targetX, targetY;
-		std::cout << path + ".map" << std::endl;
 		mapFile.open(path + ".map");
-		std::cout << path + "col.map" << std::endl;
 
 		mapColFile.open(path + " col.map");
 		for(int i = 0; i < size; i++){

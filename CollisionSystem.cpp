@@ -86,12 +86,10 @@ namespace Med {
 	void CollisionSystem::update(float dt) {
 
         player.setPosition(tc->position.x, tc->position.y);
-
         for (auto e : mEntities) {
             if (intersect(player, coordinator.GetComponent<ColliderComponent>(e).pol)) {
                 pc->steps -= 0.5f;
                 tc->position -= tc->velocity;
-                std::cout << "col" << std::endl;
             }
         }
 	}

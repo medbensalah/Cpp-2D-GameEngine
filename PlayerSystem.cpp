@@ -18,6 +18,7 @@ void Med::PlayerSystem::init(Entity& entity) {
 		shadow.setOrigin(shadow.getRadius() / 2, shadow.getRadius() / 4);
 		shadow.setPosition(tc->position.x - (shadow.getRadius() - pc->scaleX) / 2, tc->position.y + pc->sizeY * pc->scaleY / 3 - pc->scaleY * 3);
 		shadow.setFillColor(sf::Color(1, 2, 48, 200));
+		prob = 0;
 }
 
 void Med::PlayerSystem::handleInput(sf::Event& event) {
@@ -98,6 +99,7 @@ void Med::PlayerSystem::update(float dt) {
 
 	if (tc->velocity.x < 0) {
 		pc->steps += 0.5f;
+		prob = distribution(engine);
 		if (tc->velocity.y < 0) {
 			dd = UL;
 			ds = X;
@@ -123,6 +125,7 @@ void Med::PlayerSystem::update(float dt) {
 	}
 	else if (tc->velocity.x > 0) {
 		pc->steps += 0.5f;
+		prob = distribution(engine);
 
 		if (tc->velocity.y < 0) {
 			dd = UR;
@@ -151,6 +154,7 @@ void Med::PlayerSystem::update(float dt) {
 		if (tc->velocity.y < 0) {
 			ds = U;
 			pc->steps += 0.5f;
+			prob = distribution(engine);
 
 			player.setYIndex(1, pc->sizeY);
 			player.setLoopLast(false);
@@ -159,6 +163,7 @@ void Med::PlayerSystem::update(float dt) {
 		else if (tc->velocity.y > 0) {
 			ds = B;
 			pc->steps += 0.5f;
+			prob = distribution(engine);
 
 			player.setYIndex(9, pc->sizeY);
 			player.setLoopLast(false);
@@ -225,6 +230,14 @@ void Med::PlayerSystem::update(float dt) {
 		}
 	}
 	player.update(dt);
+}
+
+
+bool Med::PlayerSystem::battle(float dt) {
+	if (0 < prob && prob < 2) {
+		std::cout << pc->steps << ": " << prob << std::endl;
+	}
+	return prob;
 }
 
 void Med::PlayerSystem::draw(sf::RenderWindow& window) {

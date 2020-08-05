@@ -27,5 +27,6 @@ namespace Med {
 		std::string path;
 		std::map<int, sf::Sprite> _tiles;
 		std::map<int, sf::ConvexShape> _colliders;
+		std::map<int, sf::ConvexShape> _zones;
 	};
 }

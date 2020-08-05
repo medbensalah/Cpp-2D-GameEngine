@@ -4,6 +4,7 @@
 #include "ECS.hpp"
 #include "Animation.hpp"
 #include <iostream>
+#include <random>
 
 
 namespace Med {
@@ -11,10 +12,14 @@ namespace Med {
 
 	class PlayerSystem : public System {
 	public:
+
+		PlayerSystem() : distribution(1, 100),
+			engine(rd()) {}
 		void init(Entity& entity);
 		void handleInput(sf::Event& event);
 		void update(float dt);
 		void draw(sf::RenderWindow& window);
+		bool battle(float dt);
 		int indexX;
 		int indexY;
 		PlayerComponent* pc;
@@ -26,5 +31,10 @@ namespace Med {
 		dir dd;
 		dir ds;
 		sf::Clock clk;
+		int prob;
+
+		std::random_device rd;
+		std::uniform_int_distribution<int> distribution;
+		std::mt19937 engine;
 	};
 }

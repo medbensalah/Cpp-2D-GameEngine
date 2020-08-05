@@ -12,7 +12,6 @@ namespace Med {
 	void WorldState::init() {
 
 		_data->assets.clearTex();
-
 		coordinator.Init();
 
 		//Components
@@ -92,7 +91,7 @@ namespace Med {
 
 		playerSystem->update(dt);
 		collisionSystem->update(dt);
-		
+		playerSystem->battle(dt);
 		camera.setCenter(coordinator.GetComponent<TransformComponent>(player).position.x,
 			coordinator.GetComponent<TransformComponent>(player).position.y);
 		_data->window.setView(camera);
