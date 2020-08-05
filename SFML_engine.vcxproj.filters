@@ -90,6 +90,12 @@
     <ClInclude Include="CombatState.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GridComponent.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FightSystem.hpp">
+      <Filter>Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StateMachine.cpp">
@@ -136,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="CombatState.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FightSystem.cpp">
+      <Filter>Systems</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

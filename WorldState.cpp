@@ -20,6 +20,7 @@ namespace Med {
 		coordinator.RegisterComponent<TransformComponent>();
 		coordinator.RegisterComponent<PlayerComponent>();
 		coordinator.RegisterComponent<ColliderComponent>();
+		coordinator.RegisterComponent<GridComponent>();
 
 
 		//systems
@@ -96,7 +97,7 @@ namespace Med {
 
 		if (playerSystem->battle(dt)) {
 			std::cout << "initiate battle" << std::endl;
-			this->_data->machine.addState(StateRef(new CombatState(_data)), false);
+		//	this->_data->machine.addState(StateRef(new CombatState(_data)), false);
 		}
 		camera.setCenter(coordinator.GetComponent<TransformComponent>(player).position.x,
 			coordinator.GetComponent<TransformComponent>(player).position.y);

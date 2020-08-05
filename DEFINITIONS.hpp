@@ -82,6 +82,9 @@ extern sf::Sprite _mouse;
 extern sf::Text playerName;
 extern int playerDigimon;
 
+//**************************************************Maps
+#define SELECTED_TILE "Resources/res/ingame/maps/selectedTile.png"
+
 
 //**************************************************Digimon
 #define TERRIERMON 1

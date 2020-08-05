@@ -37,8 +37,14 @@ namespace Med {
 			pol.setPoint(3, sf::Vector2f(tileSize * scale, tileSize * scale / 4));
 			coordinator.AddComponent(tile, ColliderComponent{
 				pol
-				});
+			});
 			if (fight) {
+				coordinator.AddComponent(tile, GridComponent{
+				posX,
+				posY,
+				size,
+				0
+			});
 				pol.setFillColor(sf::Color(240, 57, 29, 100));
 				pol.setOutlineColor(sf::Color::White);
 				pol.setOutlineThickness(1);
@@ -46,6 +52,12 @@ namespace Med {
 			}
 		}
 		if(fight && !atoi(&d)) {
+			coordinator.AddComponent(tile, GridComponent{
+				posX,
+				posY,
+				size,
+				1
+			});
 			sf::ConvexShape pol(4);
 			pol.setPosition(spr.getPosition());
 			pol.setPoint(0, sf::Vector2f(tileSize * scale / 2, 0));

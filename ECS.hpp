@@ -11,6 +11,7 @@
 #include "TransformComponent.hpp"
 #include "PlayerComonent.hpp"
 #include "ColliderComponent.hpp"
+#include "GridComponent.hpp"
 
 
 namespace Med {
