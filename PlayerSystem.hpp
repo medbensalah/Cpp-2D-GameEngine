@@ -13,7 +13,7 @@ namespace Med {
 	class PlayerSystem : public System {
 	public:
 
-		PlayerSystem() : distribution(1, 100),
+		PlayerSystem() : distribution(1, 1000),
 			engine(rd()) {}
 		void init(Entity& entity);
 		void handleInput(sf::Event& event);

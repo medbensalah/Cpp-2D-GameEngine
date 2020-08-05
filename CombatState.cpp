@@ -10,6 +10,9 @@ namespace Med {
 	CombatState::CombatState(GameDataRef data) : _data(data) {}
 
 	void CombatState::init() {
+		_data->window.setView(_data->window.getDefaultView());
+
+
 		//Components
 
 		//systems
@@ -20,6 +23,12 @@ namespace Med {
 		
 		//System init
 		
+
+
+
+		_data->assets.loadTexture("maptex", "Resources/res/ingame/maps/tiles.png");
+		Map map1(2, 20, 64, "Resources/res/ingame/maps/new map", _data->assets.getTexture("maptex"), true);
+		_data->assets.loadMap("1", map1);
 		/*
 		this->_data->assets._bgm.stop();
 
@@ -45,6 +54,8 @@ namespace Med {
 
 	void CombatState::draw(float dt) {
 		this->_data->window.clear(sf::Color::Black);
+
+		_data->assets.getMap("1").draw(_data->window);
 
 		this->_data->window.display();
 	}

@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <iostream>
 #include "WorldState.hpp"
+#include "CombatState.hpp"
+
 
 Med::Coordinator coordinator;
 
@@ -65,7 +67,7 @@ namespace Med {
 		camera.setViewport(sf::FloatRect(0.f, 0.f, 1.f, 1.f));
 
 		_data->assets.loadTexture("maptex", "Resources/res/ingame/maps/tiles.png");
-		Map map1(7, 20, 64, "Resources/res/ingame/maps/new map", _data->assets.getTexture("maptex"), true);
+		Map map1(7, 20, 64, "Resources/res/ingame/maps/new map", _data->assets.getTexture("maptex"));
 		_data->assets.loadMap("1", map1);
 		/*
 		this->_data->assets._bgm.stop();
@@ -91,7 +93,11 @@ namespace Med {
 
 		playerSystem->update(dt);
 		collisionSystem->update(dt);
-		playerSystem->battle(dt);
+
+		if (playerSystem->battle(dt)) {
+			std::cout << "initiate battle" << std::endl;
+			this->_data->machine.addState(StateRef(new CombatState(_data)), false);
+		}
 		camera.setCenter(coordinator.GetComponent<TransformComponent>(player).position.x,
 			coordinator.GetComponent<TransformComponent>(player).position.y);
 		_data->window.setView(camera);

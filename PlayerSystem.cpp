@@ -234,10 +234,37 @@ void Med::PlayerSystem::update(float dt) {
 
 
 bool Med::PlayerSystem::battle(float dt) {
-	if (0 < prob && prob < 2) {
-		std::cout << pc->steps << ": " << prob << std::endl;
+	if (prob) {
+		if (pc->steps > 70 && pc->steps < 120) {
+			if (prob < 2) {
+				pc->steps = 0;
+				return true;
+			}
+		}
+		else if (pc->steps < 300) {
+			if (prob < 5) {
+				pc->steps = 0;
+				return true;
+			}
+		}
+		else if (pc->steps < 400) {
+			if (prob < 10) {
+				pc->steps = 0;
+				return true;
+			}
+		}
+		else if (pc->steps < 500) {
+			if (prob < 50) {
+				pc->steps = 0;
+				return true;
+			}
+		}
+		else {
+			pc->steps = 0;
+			return true;
+		}
 	}
-	return prob;
+	return false;
 }
 
 void Med::PlayerSystem::draw(sf::RenderWindow& window) {
