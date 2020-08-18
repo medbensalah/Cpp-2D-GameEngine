@@ -2,11 +2,11 @@
 #include <Windows.h>
 #include <iostream>
 #include "WorldState.hpp"
-#include "CombatState.hpp"
+#include "PauseState.hpp"
 
 
 Med::Coordinator coordinator;
-
+std::shared_ptr<Med::PlayerSystem> playerSystem;
 
 namespace Med {
 	WorldState::WorldState(GameDataRef data) : _data(data) {}
@@ -20,7 +20,6 @@ namespace Med {
 		coordinator.RegisterComponent<TransformComponent>();
 		coordinator.RegisterComponent<PlayerComponent>();
 		coordinator.RegisterComponent<ColliderComponent>();
-		coordinator.RegisterComponent<GridComponent>();
 
 
 		//systems
@@ -86,6 +85,13 @@ namespace Med {
 			if (sf::Event::Closed == e.type) {
 				this->_data->window.close();
 			}
+			if (e.type == sf::Event::KeyPressed) {
+				if (e.key.code == sf::Keyboard::X) {
+					std::cout << "Pause game" << std::endl;
+					this->_data->machine.addState(StateRef(new PauseState(_data)), false);
+
+				}
+			}
 			playerSystem->handleInput(e);
 		}
 	}
@@ -97,7 +103,6 @@ namespace Med {
 
 		if (playerSystem->battle(dt)) {
 			std::cout << "initiate battle" << std::endl;
-		//	this->_data->machine.addState(StateRef(new CombatState(_data)), false);
 		}
 		camera.setCenter(coordinator.GetComponent<TransformComponent>(player).position.x,
 			coordinator.GetComponent<TransformComponent>(player).position.y);

@@ -1,34 +1,28 @@
 #include <sstream>
 #include <Windows.h>
 #include <iostream>
-#include "CombatState.hpp"
+#include "PauseState.hpp"
+
 
 extern Med::Coordinator coordinator;
+extern std::shared_ptr<Med::PlayerSystem> playerSystem;
 
 
 namespace Med {
-	CombatState::CombatState(GameDataRef data) : _data(data) {}
+	PauseState::PauseState(GameDataRef data) : _data(data) {}
 
-	void CombatState::init() {
-		_data->window.setView(_data->window.getDefaultView());
-
-
+	void PauseState::init() {
 		//Components
 
 		//systems
 
+
 		//entity
-		
+
 		//entities add component
-		
+
 		//System init
-		
 
-
-
-		_data->assets.loadTexture("maptex", "Resources/res/ingame/maps/tiles.png");
-		Map map1(2, 20, 64, "Resources/res/ingame/maps/new map", _data->assets.getTexture("maptex"), true);
-		_data->assets.loadMap("1", map1);
 		/*
 		this->_data->assets._bgm.stop();
 
@@ -38,24 +32,31 @@ namespace Med {
 		*/
 	}
 
-	void CombatState::handleInput() {
+	void PauseState::handleInput() {
 		sf::Event e;
 
 		while (this->_data->window.pollEvent(e)) {
 			if (sf::Event::Closed == e.type) {
 				this->_data->window.close();
 			}
+			if (e.type == sf::Event::KeyPressed) {
+				if (e.key.code == sf::Keyboard::X) {
+
+				}
+			}
 		}
 	}
 
-	void CombatState::update(float dt) {
+	void PauseState::update(float dt) {
 
 	}
 
-	void CombatState::draw(float dt) {
+	void PauseState::draw(float dt) {
 		this->_data->window.clear(sf::Color::Black);
 
 		_data->assets.getMap("1").draw(_data->window);
+		playerSystem->draw(_data->window);
+		//	collisionSystem->draw(_data->window);
 
 		this->_data->window.display();
 	}

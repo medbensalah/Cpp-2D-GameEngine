@@ -5,11 +5,13 @@
 #include "Game.hpp"
 #include "DEFINITIONS.hpp"
 #include "ECS.hpp"
+#include "PlayerSystem.hpp"
+#include "CollisionSystem.hpp"
 
 namespace Med {
-	class CombatState : public State {
+	class PauseState : public State {
 	public:
-		CombatState(GameDataRef data);
+		PauseState(GameDataRef data);
 
 		void init();
 		void handleInput();

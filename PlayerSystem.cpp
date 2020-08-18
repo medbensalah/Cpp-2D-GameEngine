@@ -6,7 +6,7 @@ extern Med::Coordinator coordinator;
 void Med::PlayerSystem::init(Entity& entity) {
 		pc = &coordinator.GetComponent<PlayerComponent>(entity);
 		tc = &coordinator.GetComponent<TransformComponent>(entity);
-		player.init(0, 0, 6, pc->sizeX, pc->sizeY, pc->scaleX, pc->scaleY, 6, false, pc->tex);
+		player.init(0, 0, 6, pc->sizeX, pc->sizeY, pc->scaleX, pc->scaleY, 5, false, pc->tex);
 		idle.init(0, 0, 3, pc->sizeX, pc->sizeY, pc->scaleX, pc->scaleY, 10, true, pc->tex);
 		player.setOrigin(pc->sizeX / 2, pc->sizeY * 2 / 3);
 		idle.setOrigin(pc->sizeX / 2, pc->sizeY * 2 / 3);

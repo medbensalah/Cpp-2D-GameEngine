@@ -8,12 +8,11 @@
 extern Med::Coordinator coordinator;
 
 namespace Med {
-	Map::Map(float sc, int s, int tileSize, std::string path, sf::Texture& tex, bool fight) {
+	Map::Map(float sc, int s, int tileSize, std::string path, sf::Texture& tex) {
 		scale = sc;
 		size = s;
 		this->tileSize = tileSize;
 		this->path = path;
-		this->fight = fight;
 		loadFromPath(tex);
 		
 	}
@@ -38,36 +37,10 @@ namespace Med {
 			coordinator.AddComponent(tile, ColliderComponent{
 				pol
 			});
-			if (fight) {
-				coordinator.AddComponent(tile, GridComponent{
-				posX,
-				posY,
-				size,
-				0
-			});
-				pol.setFillColor(sf::Color(240, 57, 29, 100));
-				pol.setOutlineColor(sf::Color::White);
-				pol.setOutlineThickness(1);
-				_colliders.emplace(tile, pol);
-			}
-		}
-		if(fight && !atoi(&d)) {
-			coordinator.AddComponent(tile, GridComponent{
-				posX,
-				posY,
-				size,
-				1
-			});
-			sf::ConvexShape pol(4);
-			pol.setPosition(spr.getPosition());
-			pol.setPoint(0, sf::Vector2f(tileSize * scale / 2, 0));
-			pol.setPoint(1, sf::Vector2f(0, tileSize * scale / 4));
-			pol.setPoint(2, sf::Vector2f(tileSize * scale / 2, tileSize * scale / 2));
-			pol.setPoint(3, sf::Vector2f(tileSize * scale, tileSize * scale / 4));
-			pol.setFillColor(sf::Color::Transparent);
+			pol.setFillColor(sf::Color(240, 57, 29, 100));
 			pol.setOutlineColor(sf::Color::White);
 			pol.setOutlineThickness(1);
-			_zones.emplace(tile, pol);
+			_colliders.emplace(tile, pol);
 		}
 	}
 		
@@ -75,15 +48,6 @@ namespace Med {
 		
 		for (auto kv : _tiles) {
 			window.draw(kv.second);
-		}
-
-		if (fight) {
-			for (auto kv : _colliders) {
-				window.draw(kv.second);
-			}
-			for (auto kv : _zones) {
-				window.draw(kv.second);
-			}
 		}
 	}
 

@@ -21,7 +21,6 @@ namespace Med {
 	private:
 		GameDataRef _data;
 		Entity player;
-		std::shared_ptr<PlayerSystem> playerSystem;
 		std::shared_ptr<CollisionSystem> collisionSystem;
 		sf::View camera;
 	};

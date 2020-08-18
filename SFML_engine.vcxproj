@@ -142,18 +142,16 @@
     <ClInclude Include="AssetManager.hpp" />
     <ClInclude Include="ColliderComponent.hpp" />
     <ClInclude Include="CollisionSystem.hpp" />
-    <ClInclude Include="CombatState.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="DigimonSelectionState.hpp" />
     <ClInclude Include="ECS.hpp" />
-    <ClInclude Include="FightSystem.hpp" />
     <ClInclude Include="Game.hpp" />
-    <ClInclude Include="GridComponent.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="IntroductionFMVState.hpp" />
     <ClInclude Include="LoginState.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="Map.hpp" />
+    <ClInclude Include="PauseState.hpp" />
     <ClInclude Include="PlayerComonent.hpp" />
     <ClInclude Include="PlayerSystem.hpp" />
     <ClInclude Include="SplashState.hpp" />
@@ -166,9 +164,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="CollisionSystem.cpp" />
-    <ClCompile Include="CombatState.cpp" />
     <ClCompile Include="DigimonSelectionState.cpp" />
-    <ClCompile Include="FightSystem.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IntroductionFMVState.cpp" />
@@ -176,6 +172,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="PlayerSystem.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />

@@ -12,7 +12,7 @@ extern Med::Coordinator  coordinator;
 namespace Med {
 	class Map {
 	public:
-		Map(float scale, int s, int tileSize, std::string path, sf::Texture& tex, bool fight = false);
+		Map(float scale, int s, int tileSize, std::string path, sf::Texture& tex);
 		Map();
 		~Map() {}
 
@@ -23,7 +23,6 @@ namespace Med {
 		int size;
 		int tileSize;
 		double scale;
-		bool fight;
 		std::string path;
 		std::map<int, sf::Sprite> _tiles;
 		std::map<int, sf::ConvexShape> _colliders;

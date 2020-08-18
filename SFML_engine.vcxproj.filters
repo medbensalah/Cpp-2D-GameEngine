@@ -87,14 +87,8 @@
     <ClInclude Include="CollisionSystem.hpp">
       <Filter>Systems</Filter>
     </ClInclude>
-    <ClInclude Include="CombatState.hpp">
+    <ClInclude Include="PauseState.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GridComponent.hpp">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="FightSystem.hpp">
-      <Filter>Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -140,11 +134,8 @@
     <ClCompile Include="CollisionSystem.cpp">
       <Filter>Systems</Filter>
     </ClCompile>
-    <ClCompile Include="CombatState.cpp">
+    <ClCompile Include="PauseState.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FightSystem.cpp">
-      <Filter>Systems</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
