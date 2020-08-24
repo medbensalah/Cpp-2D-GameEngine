@@ -13,5 +13,7 @@ namespace Med {
 		int digimon;
 		sf::Texture tex;
 		float steps;
+		int bits;
+//		std::vector<DigimonComponent> digimon;
 	};
 }

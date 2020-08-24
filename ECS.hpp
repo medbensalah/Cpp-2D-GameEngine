@@ -9,8 +9,8 @@
 #include <array>
 #include <unordered_map>
 #include "TransformComponent.hpp"
-#include "PlayerComonent.hpp"
 #include "ColliderComponent.hpp"
+#include "PlayerComonent.hpp"
 
 
 namespace Med {

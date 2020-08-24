@@ -49,7 +49,8 @@ namespace Med {
 											 playerName,
 											 playerDigimon,
 											 _data->assets.getTexture("player"),
-											 0.0f
+											 0.0f,
+											 0
 		});
 		coordinator.AddComponent(player, TransformComponent{
 											 Vec2D(20, 20),

@@ -83,8 +83,11 @@ extern sf::Text playerName;
 extern int playerDigimon;
 
 //**************************************************Maps
-#define SELECTED_TILE "Resources/res/ingame/maps/selectedTile.png"
 
+//**************************************************Pause
+#define PAUSE_MENU_BACKGROUNDI "Resources/res/PauseMenu/MenuBackground0.png"
+#define PAUSE_MENU_BACKGROUND "Resources/res/PauseMenu/MenuBackground.png"
+#define PAUSE_MENU_ITEM "Resources/res/PauseMenu/MenuItem.png"
 
 //**************************************************Digimon
 #define TERRIERMON 1
